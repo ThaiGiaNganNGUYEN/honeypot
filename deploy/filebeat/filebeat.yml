@@ -1,0 +1,23 @@
+filebeat.inputs:
+  - type: filestream
+    id: honeypot-lab
+    enabled: true
+    paths:
+      - /var/log/honeypot/events.jsonl
+    parsers:
+      - ndjson:
+          keys_under_root: true
+          overwrite_keys: true
+          add_error_key: true
+
+output.elasticsearch:
+  hosts: ["http://elasticsearch:9200"]
+  index: "honeypot-%{+yyyy.MM.dd}"
+
+setup.template.name: "honeypot"
+setup.template.pattern: "honeypot-*"
+setup.ilm.enabled: false
+
+logging.level: info
+logging.to_files: false
+logging.to_stderr: true

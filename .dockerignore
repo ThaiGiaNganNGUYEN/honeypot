@@ -1,0 +1,10 @@
+.venv
+venv
+logs
+reports
+keys
+.git
+.vagrant
+__pycache__
+**/__pycache__
+*.pyc

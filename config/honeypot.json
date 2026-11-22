@@ -1,0 +1,32 @@
+{
+  "bind_host": "127.0.0.1",
+  "log_dir": "logs",
+  "session_timeout_seconds": 120,
+  "max_events_per_session": 200,
+  "max_concurrent_connections": 32,
+  "ssh": {
+    "enabled": true,
+    "port": 2222,
+    "banner": "SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.11",
+    "hostname": "prod-gateway",
+    "accept_passwords": true,
+    "reject_first_n": 0,
+    "max_auth_attempts": 6
+  },
+  "http": {
+    "enabled": true,
+    "port": 8080,
+    "server_header": "Apache/2.4.41 (Ubuntu)",
+    "site_name": "Branch Gateway"
+  },
+  "ftp": {
+    "enabled": true,
+    "port": 2121,
+    "banner": "220 (vsFTPd 3.0.3)"
+  },
+  "dashboard": {
+    "enabled": true,
+    "bind_host": "127.0.0.1",
+    "port": 8090
+  }
+}

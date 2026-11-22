@@ -1,0 +1,19 @@
+[Unit]
+Description=Training honeypot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=honeypot
+Group=honeypot
+WorkingDirectory=/opt/honeypot/app
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/honeypot/venv/bin/python -m honeypot --bind 0.0.0.0 --dashboard-bind 0.0.0.0 --log-dir /var/log/honeypot --key-dir /var/lib/honeypot/keys --config /opt/honeypot/app/config/honeypot.json
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
